@@ -1,20 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { shuffleCard } from '../logic/shuffle'
 
 import { Card } from './Card'
+import { PlayButtonOverlay } from './PlayButtonOverlay'
 
 export const Table = () => {
     const [cards, setCards] = useState([])
+    const [isGameRunning, setIsGameRunning] = useState(false)
+
     const callShuffle = () => {
-        if(cards.length > 0) console.log("THe cards", cards)
         setCards(shuffleCard());
-        // console.log("Shuffle called")
     }
+
+    useEffect(()=>{
+        if(cards.length > 0) setIsGameRunning(true)
+    },[cards])
   return (
     <div className='table'>
         <div className="wooden-part">
             <div className="table-inner">
-                <button onClick={callShuffle}>Shuffle Card</button>
+                {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
                 {cards.length > 0 && <Card rank={cards[0].rank} suit={cards[0].suit}></Card>}
             </div>
         </div>
