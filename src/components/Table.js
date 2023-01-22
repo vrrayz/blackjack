@@ -5,6 +5,7 @@ import { Card } from "./Card";
 import { PlayButtonOverlay } from "./PlayButtonOverlay";
 import { PlayerSection } from "./PlayerSection";
 import { DealerSection } from "./DealerSection";
+import { HitStandSection } from "./HitStandSection";
 
 export const Table = () => {
   const [cards, setCards] = useState([]);
@@ -43,10 +44,10 @@ export const Table = () => {
     <div className="table">
       <div className="wooden-part">
         <div className="table-inner">
-        <button onClick={drawCards}>Draw Cards</button>
           <DealerSection cards={dealerCards} />
           {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
           <PlayerSection cards={playerCards} />
+          {isGameRunning && <HitStandSection drawCards={drawCards} />}
         </div>
       </div>
     </div>

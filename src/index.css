@@ -117,3 +117,13 @@ code {
   display: flex;
   justify-content: center;
 }
+.draw-hit-section{
+  display: flex;
+  justify-content: center;
+}
+.draw-hit-section button{
+  position: relative;
+    width: 100%;
+    height: 50px;
+    top: 404px;
+}
