@@ -30,13 +30,13 @@ export const Table = () => {
     );
   };
   useEffect(() => {
-    console.log("Cards now", cards);
+    // console.log("Cards now", cards);
     // console.log("Game running", isGameRunning)
     if (cards.length > 48) {
       drawCards();
     }
-    if(cards.length === 48){
-      setIsFirstDraw(false)
+    if (cards.length === 48) {
+      setIsFirstDraw(false);
     }
   }, [cards]);
 
@@ -46,8 +46,12 @@ export const Table = () => {
         <div className="table-inner">
           <DealerSection cards={dealerCards} />
           {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
-          <PlayerSection cards={playerCards} />
-          {isGameRunning && <HitStandSection drawCards={drawCards} />}
+          {isGameRunning && (
+            <>
+              <PlayerSection cards={playerCards} />
+              <HitStandSection drawCards={drawCards} />
+            </>
+          )}
         </div>
       </div>
     </div>
