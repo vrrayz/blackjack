@@ -11,14 +11,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.container{
+
+.container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
 }
-.table{
+
+.table {
   width: 350px;
   height: 531px;
   /* border: 20px solid #623e38; */
@@ -27,22 +29,56 @@ code {
   border-radius: 38%;
   box-shadow: 0px 0px 64px 3px black inset; */
 }
-.wooden-part{
+
+.wooden-part {
   width: 100%;
   height: 100%;
   /* padding: 8px; */
   background-image: radial-gradient(#31201d 55%, #875950 103%, #31201d 63%);
   border-radius: 29%;
-  border: 3px solid rgba(12,12,12,0.3);
+  border: 3px solid rgba(12, 12, 12, 0.3);
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.table-inner{
+
+.table-inner {
   width: 320px;
   height: 486px;
   background-color: #116731;
   border-radius: 29%;
   box-shadow: 0px 0px 64px 3px black inset;
   margin: auto;
+}
+
+.card {
+  width: 35px;
+  height: 50px;
+  background-color: #fff;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 0px 2px 6px 3px;
+}
+
+.card .suit {
+  text-align: right;
+  font-size: 25px;
+}
+.card.spades{
+  color: black;
+}
+.card.hearts{
+  color: red;
+}
+.card.diamonds{
+  color: blue;
+}
+.card.clubs{
+  color: green;
 }
