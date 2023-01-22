@@ -108,7 +108,12 @@ code {
 .player-section{
   position: relative;
   top: 263px;
-  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
+}
+.dealer-section{
+  position: relative;
+  top: 0px;
   display: flex;
   justify-content: center;
 }

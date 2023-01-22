@@ -4,6 +4,7 @@ import { shuffleCard } from "../logic/shuffle";
 import { Card } from "./Card";
 import { PlayButtonOverlay } from "./PlayButtonOverlay";
 import { PlayerSection } from "./PlayerSection";
+import { DealerSection } from "./DealerSection";
 
 export const Table = () => {
   const [cards, setCards] = useState([]);
@@ -33,34 +34,19 @@ export const Table = () => {
     if (cards.length > 48) {
       drawCards();
     }
+    if(cards.length === 48){
+      setIsFirstDraw(false)
+    }
   }, [cards]);
 
-  // useEffect(() => {
-  //   console.log("Player Cards is ", playerCards.length);
-  //   if (playerCards.length < 2 && isGameRunning && isFirstDraw) {
-  //     drawCards();
-  //   }
-  // }, [playerCards,isFirstDraw,isGameRunning]);
   return (
     <div className="table">
       <div className="wooden-part">
         <div className="table-inner">
         <button onClick={drawCards}>Draw Cards</button>
-          <div>
-            {dealerCards.length > 0 && (
-              <ul>
-                {dealerCards.map((x) => (
-                  <li>
-                    {x.rank} {x.suit}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          <DealerSection cards={dealerCards} />
           {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
-
           <PlayerSection cards={playerCards} />
-          {/* {cards.length > 0 && <Card rank={cards[0].rank} suit={cards[0].suit}></Card>} */}
         </div>
       </div>
     </div>
