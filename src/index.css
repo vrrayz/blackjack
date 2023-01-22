@@ -107,8 +107,8 @@ code {
 }
 .player-section{
   position: relative;
-    top: 335px;
-    background-color: blue;
-    display: flex;
-    justify-content: center;
+  top: 263px;
+  /* background-color: blue; */
+  display: flex;
+  justify-content: center;
 }

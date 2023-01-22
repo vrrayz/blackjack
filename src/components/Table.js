@@ -18,9 +18,9 @@ export const Table = () => {
     setIsGameRunning(true);
   };
   const drawCards = () => {
-    if(isPlayerTurn) setPlayerCards([...playerCards, cards[cards.length - 1]]);
+    if (isPlayerTurn) setPlayerCards([...playerCards, cards[cards.length - 1]]);
     else setDealerCards([...dealerCards, cards[cards.length - 1]]);
-    if (isFirstDraw) setIsPlayerTurn(!isPlayerTurn)
+    if (isFirstDraw) setIsPlayerTurn(!isPlayerTurn);
     setCards(
       cards.filter((card, index) => {
         return index < cards.length - 1;
@@ -45,31 +45,21 @@ export const Table = () => {
     <div className="table">
       <div className="wooden-part">
         <div className="table-inner">
+        <button onClick={drawCards}>Draw Cards</button>
           <div>
-            <button onClick={drawCards}>Draw Cards</button>
-            <h4>Player Cards</h4>
-            {playerCards.length > 0 && (
-              <ul>
-              {playerCards.map((x) => (
-                <li>
-                  {x.rank} {x.suit}
-                </li>
-              ))}
-            </ul>
-            )}
-            <h4>Dealer Cards</h4>
             {dealerCards.length > 0 && (
               <ul>
-              {dealerCards.map((x) => (
-                <li>
-                  {x.rank} {x.suit}
-                </li>
-              ))}
-            </ul>
+                {dealerCards.map((x) => (
+                  <li>
+                    {x.rank} {x.suit}
+                  </li>
+                ))}
+              </ul>
             )}
           </div>
           {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
-          {/* <PlayerSection cards={cards} /> */}
+
+          <PlayerSection cards={playerCards} />
           {/* {cards.length > 0 && <Card rank={cards[0].rank} suit={cards[0].suit}></Card>} */}
         </div>
       </div>
