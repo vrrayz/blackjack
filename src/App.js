@@ -4,7 +4,7 @@ import { Table } from './components/Table';
 
 function App() {
   return (
-    <div className='container'>
+    <div className='container table-bg'>
     <Table></Table>
     </div>
   );
