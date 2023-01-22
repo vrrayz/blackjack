@@ -8,6 +8,9 @@ import { PlayerSection } from "./PlayerSection";
 export const Table = () => {
   const [cards, setCards] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
+  const [dealerCards, setDealerCards] = useState([]);
+  const [isFirstDraw, setIsFirstDraw] = useState(true);
+  const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [isGameRunning, setIsGameRunning] = useState(false);
 
   const callShuffle = () => {
@@ -15,7 +18,9 @@ export const Table = () => {
     setIsGameRunning(true);
   };
   const drawCards = () => {
-    setPlayerCards([...playerCards, cards[cards.length - 1]]);
+    if(isPlayerTurn) setPlayerCards([...playerCards, cards[cards.length - 1]]);
+    else setDealerCards([...dealerCards, cards[cards.length - 1]]);
+    if (isFirstDraw) setIsPlayerTurn(!isPlayerTurn)
     setCards(
       cards.filter((card, index) => {
         return index < cards.length - 1;
@@ -25,26 +30,37 @@ export const Table = () => {
   useEffect(() => {
     console.log("Cards now", cards);
     // console.log("Game running", isGameRunning)
-    if (cards.length === 52) {
+    if (cards.length > 48) {
       drawCards();
     }
   }, [cards]);
 
-  useEffect(() => {
-    console.log("Player Cards is ", playerCards.length);
-    if (playerCards.length < 2 && isGameRunning) {
-      drawCards();
-    }
-  }, [playerCards]);
+  // useEffect(() => {
+  //   console.log("Player Cards is ", playerCards.length);
+  //   if (playerCards.length < 2 && isGameRunning && isFirstDraw) {
+  //     drawCards();
+  //   }
+  // }, [playerCards,isFirstDraw,isGameRunning]);
   return (
     <div className="table">
       <div className="wooden-part">
         <div className="table-inner">
           <div>
             <button onClick={drawCards}>Draw Cards</button>
+            <h4>Player Cards</h4>
             {playerCards.length > 0 && (
               <ul>
               {playerCards.map((x) => (
+                <li>
+                  {x.rank} {x.suit}
+                </li>
+              ))}
+            </ul>
+            )}
+            <h4>Dealer Cards</h4>
+            {dealerCards.length > 0 && (
+              <ul>
+              {dealerCards.map((x) => (
                 <li>
                   {x.rank} {x.suit}
                 </li>
