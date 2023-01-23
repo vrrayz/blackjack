@@ -1,7 +1,7 @@
 import React from "react";
-export const GameOverlay = ({children}) => {
+export const GameOverlay = ({className, children}) => {
   return (
-    <div className="game-overlay">
+    <div className={`game-overlay ${className}`}>
       {children}
     </div>
   );

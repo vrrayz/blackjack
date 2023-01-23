@@ -49,7 +49,7 @@ export const Table = () => {
     if (cards.length === 48) {
       setIsFirstDraw(false);
     }
-    console.log("Cards ", cards);
+    // console.log("Cards ", cards);
   }, [cards]);
 
   useEffect(() => {
@@ -62,7 +62,7 @@ export const Table = () => {
 
   useEffect(() => {
     if (playerScore > blackJack) setRoundStatus("lost");
-    // if(playerScore === blackJack) alert ("BLACKJACK")
+    if(playerScore === blackJack) setRoundStatus("won")
   }, [playerScore]);
 
   return (
@@ -76,13 +76,13 @@ export const Table = () => {
           )}
           {isGameRunning && (
             <>
-              <RoundResult roundStatus={roundStatus} />
               <DealerSection cards={dealerCards} score={dealerScore} />
               <MidSection cards={cards} />
               <PlayerSection cards={playerCards} score={playerScore} />
               <HitStandSection drawCards={drawCards} />
             </>
           )}
+          {roundStatus && <RoundResult roundStatus={roundStatus} />}
         </div>
       </div>
     </div>
