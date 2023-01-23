@@ -10,8 +10,13 @@ export const Card = ({ rank, suit, isHidden }) => {
     if (suit === "diamonds") setCharCode(9830);
   }, [suit]);
   return (
-    <div className={`card ${suit} ${isHidden ? "bg-red" : ""}`}>
-      {!isHidden && (
+    <div className={`card ${suit} ${isHidden ? "hidden" : ""}`}>
+      {isHidden ? (
+        <>
+        GRIM<br/>
+        SAVAGE
+        </>
+      ) : (
         <>
           <span className="rank">{rank}</span>
           <span className="suit">{String.fromCharCode(charCode)}</span>
