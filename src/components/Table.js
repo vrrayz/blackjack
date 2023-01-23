@@ -11,8 +11,9 @@ import { HitStandSection } from "./HitStandSection";
 export const Table = () => {
   const [cards, setCards] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
-  const [playerScore, setPlayerScore] = useState(rankScore([playerCards]));
+  const [playerScore, setPlayerScore] = useState(rankScore([]));
   const [dealerCards, setDealerCards] = useState([]);
+  const [dealerScore, setDealerScore] = useState(rankScore([]));
   const [isFirstDraw, setIsFirstDraw] = useState(true);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
   const [isGameRunning, setIsGameRunning] = useState(false);
@@ -32,8 +33,6 @@ export const Table = () => {
     );
   };
   useEffect(() => {
-    // console.log("Cards now", cards);
-    // console.log("Game running", isGameRunning)
     if (cards.length > 48) {
       drawCards();
     }
@@ -46,14 +45,18 @@ export const Table = () => {
     setPlayerScore(rankScore(playerCards))
   },[playerCards])
 
+  useEffect(() => {
+    setDealerScore(rankScore(dealerCards))
+  },[dealerCards])
+
   return (
     <div className="table">
       <div className="wooden-part">
         <div className="table-inner">
-          <DealerSection cards={dealerCards} />
           {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
           {isGameRunning && (
             <>
+              <DealerSection cards={dealerCards} score={dealerScore} />
               <PlayerSection cards={playerCards} score={playerScore}/>
               <HitStandSection drawCards={drawCards} />
             </>

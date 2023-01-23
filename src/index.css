@@ -162,7 +162,14 @@ code {
   position: absolute;
   bottom: 62px;
   background: rgba(0, 0, 0, .5);
-  padding: 0px 12px 2px 12px;
+  /* padding: 0px 12px 2px 12px; */
+  text-align: center;
   border-radius: 13px;
   color: #fff;
+  width: 41px;
+  height: 24px;
+}
+.dealer-section .rank-score{
+  top: 100px;
+  bottom: 0px;
 }
