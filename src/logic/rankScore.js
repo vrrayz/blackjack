@@ -1,10 +1,11 @@
 export const rankScore = (cards) => {
   const tempArray = [];
   cards.forEach((card, index) => {
+    // Differentitate the string ranks like A J Q K with the number ranks
     if (typeof card.rank === "string") {
+      // Logic for when A should be 10 and when A should be 1
       if (card.rank === "A") {
         const ts = totalScore(tempArray, index);
-        console.log("TS on A ", ts);
         const score = ts + 10 > 21 ? 1 : 10;
         tempArray.push({ rank: card.rank, score: score });
         return tempArray;
@@ -15,7 +16,7 @@ export const rankScore = (cards) => {
     tempArray.push({ rank: card.rank, score: card.rank });
     return tempArray;
   });
-  return totalScore(tempArray,-1);
+  return totalScore(tempArray, -1);
 };
 
 const totalScore = (cards, index) => {

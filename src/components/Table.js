@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { shuffleCard } from "../logic/shuffle";
+import { rankScore } from '../logic/rankScore';
 
-import { Card } from "./Card";
+
 import { PlayButtonOverlay } from "./PlayButtonOverlay";
 import { PlayerSection } from "./PlayerSection";
 import { DealerSection } from "./DealerSection";
@@ -10,6 +11,7 @@ import { HitStandSection } from "./HitStandSection";
 export const Table = () => {
   const [cards, setCards] = useState([]);
   const [playerCards, setPlayerCards] = useState([]);
+  const [playerScore, setPlayerScore] = useState(rankScore([playerCards]));
   const [dealerCards, setDealerCards] = useState([]);
   const [isFirstDraw, setIsFirstDraw] = useState(true);
   const [isPlayerTurn, setIsPlayerTurn] = useState(true);
@@ -40,6 +42,10 @@ export const Table = () => {
     }
   }, [cards]);
 
+  useEffect(() => {
+    setPlayerScore(rankScore(playerCards))
+  },[playerCards])
+
   return (
     <div className="table">
       <div className="wooden-part">
@@ -48,7 +54,7 @@ export const Table = () => {
           {!isGameRunning && <PlayButtonOverlay callShuffle={callShuffle} />}
           {isGameRunning && (
             <>
-              <PlayerSection cards={playerCards} />
+              <PlayerSection cards={playerCards} score={playerScore}/>
               <HitStandSection drawCards={drawCards} />
             </>
           )}
