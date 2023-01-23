@@ -138,7 +138,7 @@ export const Table = () => {
               <DealerSection cards={dealerCards} score={dealerScore} />
               <MidSection cards={cards} />
               <PlayerSection cards={playerCards} score={playerScore} />
-              <HitStandSection stand={stand} drawCards={drawCards} />
+              {isPlayerTurn && <HitStandSection stand={stand} drawCards={drawCards} />}
             </>
           )}
           {roundStatus && <RoundResult roundStatus={roundStatus} />}
