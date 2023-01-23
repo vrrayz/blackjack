@@ -8,8 +8,8 @@ export const PlayerSection = ({cards,score}) => {
     <>
     <div className='player-section'>
       <RankScore score={score}/>
-      {cards.map(x => (
-        <Card rank={x.rank} suit={x.suit}></Card>
+      {cards.map((x, i) => (
+        <Card rank={x.rank} suit={x.suit} key={i}></Card>
       ))}
     </div>
     </>
