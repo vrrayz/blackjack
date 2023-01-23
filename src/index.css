@@ -96,10 +96,12 @@ code {
   font-weight: 700;
 }
 
-.play-btn-overlay {
+.game-overlay {
   position: fixed;
   width: 100vw;
   height: 100vh;
+  z-index: 1;
+  color: #fff;
   background: rgba(0, 0, 0, .8);
   top: 0;
   left: 0;
@@ -196,4 +198,7 @@ code {
   position: absolute;
   top: 0;
   right: 20px;
+}
+.round-message{
+  text-align: center;
 }
