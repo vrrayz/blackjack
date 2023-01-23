@@ -7,6 +7,7 @@ import { PlayButtonOverlay } from "./PlayButtonOverlay";
 import { PlayerSection } from "./PlayerSection";
 import { DealerSection } from "./DealerSection";
 import { HitStandSection } from "./HitStandSection";
+import { MidSection } from "./MidSection";
 
 export const Table = () => {
   const [cards, setCards] = useState([]);
@@ -57,6 +58,7 @@ export const Table = () => {
           {isGameRunning && (
             <>
               <DealerSection cards={dealerCards} score={dealerScore} />
+              <MidSection cards={cards} />
               <PlayerSection cards={playerCards} score={playerScore}/>
               <HitStandSection drawCards={drawCards} />
             </>

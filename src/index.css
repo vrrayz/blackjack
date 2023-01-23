@@ -174,3 +174,16 @@ code {
   top: 62px;
   bottom: 0px;
 }
+.mid-section {
+  position: relative;
+    top: 162px;
+    background-color: rgba(0,0,0,.3);
+  display: flex;
+  justify-content: end;
+
+}
+.mid-section .cards .card{
+  position: absolute;
+  top: 0;
+  right: 20px;
+}
