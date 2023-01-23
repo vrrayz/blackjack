@@ -24,7 +24,10 @@ export const Table = () => {
     setIsGameRunning(true);
   };
   const drawCards = () => {
-    if (isPlayerTurn) setPlayerCards([...playerCards, cards[cards.length - 1]]);
+    if (isPlayerTurn || (isFirstDraw && !isPlayerTurn && dealerCards.length === 0)) cards[cards.length - 1].isHidden = false
+    if (isPlayerTurn){
+      setPlayerCards([...playerCards, cards[cards.length - 1]]);
+    }
     else setDealerCards([...dealerCards, cards[cards.length - 1]]);
     if (isFirstDraw) setIsPlayerTurn(!isPlayerTurn);
     setCards(
@@ -40,6 +43,7 @@ export const Table = () => {
     if (cards.length === 48) {
       setIsFirstDraw(false);
     }
+    console.log("Cards ", cards)
   }, [cards]);
 
   useEffect(() => {

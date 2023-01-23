@@ -85,6 +85,9 @@ code {
 .card.clubs {
   color: green;
 }
+.card.bg-red {
+  background-color: red;
+}
 
 .play-btn-overlay {
   position: fixed;
